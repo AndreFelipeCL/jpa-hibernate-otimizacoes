@@ -21,10 +21,10 @@ public class JpaConfigurator {
 	public DataSource getDataSource() {
 	    DriverManagerDataSource dataSource = new DriverManagerDataSource();
 
-	    dataSource.setDriverClassName("com.mysql.jdbc.Driver");
-	    dataSource.setUrl("jdbc:mysql://localhost/projeto_jpa");
+	    dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
+	    dataSource.setUrl("jdbc:mysql://localhost/projeto_jpa?useTimezone=true&serverTimezone=UTC");
 	    dataSource.setUsername("root");
-	    dataSource.setPassword("");
+	    dataSource.setPassword("135246@@");
 
 	    return dataSource;
 	}

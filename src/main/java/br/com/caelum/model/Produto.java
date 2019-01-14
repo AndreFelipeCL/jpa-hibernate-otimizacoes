@@ -1,6 +1,7 @@
 
 package br.com.caelum.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -9,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.validation.Valid;
 import javax.validation.constraints.Min;
 
@@ -32,6 +34,8 @@ public class Produto {
 	@Min(20)
 	private double preco;
 	
+	@OneToMany
+	private List<Categoria> categorias = new ArrayList<>();
 	
 	@Valid
 	@ManyToOne
