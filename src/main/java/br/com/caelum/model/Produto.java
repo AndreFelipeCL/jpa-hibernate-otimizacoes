@@ -41,6 +41,11 @@ public class Produto {
 	@ManyToOne
 	private Loja loja;
 	
+	public void adicionarCategorias(Categoria ... c) {
+		for (Categoria categoria : c) {
+			this.getCategorias().add(categoria);
+		}
+	}
 	
 	public String getDescricao() {
 		return descricao;
@@ -50,14 +55,6 @@ public class Produto {
 		this.descricao = descricao;
 	}
 	
-	//método auxiliar para associar categorias com o produto
-	//se funcionar apos ter definido o relacionamento entre produto e categoria
-//	public void adicionarCategorias(Categoria... categorias) {
-//		for (Categoria categoria : categorias) {
-//			this.categorias.add(categoria);
-//		}
-//	}
-
 	public String getLinkDaFoto() {
 		return linkDaFoto;
 	}
@@ -96,6 +93,14 @@ public class Produto {
 
 	public Loja getLoja() {
 		return loja;
+	}
+
+	public List<Categoria> getCategorias() {
+		return categorias;
+	}
+
+	public void setCategorias(List<Categoria> categorias) {
+		this.categorias = categorias;
 	}
 
 }

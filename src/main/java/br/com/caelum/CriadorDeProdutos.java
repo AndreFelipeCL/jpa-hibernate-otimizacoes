@@ -32,7 +32,7 @@ public class CriadorDeProdutos {
 			protected void doInTransactionWithoutResult(TransactionStatus status) {
 				
 				Loja casaDoCodigo = new Loja();
-				casaDoCodigo.setNome("Casa do CÃ³digo");
+				casaDoCodigo.setNome("Casa do Código");
 				
 				em.persist(casaDoCodigo);
 				
@@ -44,31 +44,31 @@ public class CriadorDeProdutos {
 				Categoria tecnologia = new Categoria("Tecnologia");
 				em.persist(tecnologia);
 				
-				Categoria musica = new Categoria("MÃºsica");
+				Categoria musica = new Categoria("Música");
 				em.persist(musica);
 				
 				Produto cursoDeViolao = new Produto();
-				cursoDeViolao.setNome("Curso de ViolÃ£o");
+				cursoDeViolao.setNome("Curso de Violão");
 				cursoDeViolao.setLoja(musicalAlegre);
 				cursoDeViolao.setPreco(49.0);
 				cursoDeViolao.setDescricao("Estude com os melhores professores e aprenda no seu ritmo, sem sair de casa.");
-//				cursoDeViolao.adicionarCategorias(tecnologia, musica);
+				cursoDeViolao.adicionarCategorias(tecnologia, musica);
 				cursoDeViolao.setLinkDaFoto("https://pbs.twimg.com/profile_images/378800000825434860/12136ee913ed4f44860914d44650144e.png");
 				
 				em.persist(cursoDeViolao);
 				
 				Produto livroDeArquitetura = new Produto();
-				livroDeArquitetura.setNome("IntroduÃ§ao a Arquitetura Java e Design de projetos com Java");
+				livroDeArquitetura.setNome("Introduçao a Arquitetura Java e Design de projetos com Java");
 				livroDeArquitetura.setLoja(casaDoCodigo);
 				livroDeArquitetura.setPreco(30.0);
-//				livroDeArquitetura.adicionarCategorias(tecnologia);
+				livroDeArquitetura.adicionarCategorias(tecnologia);
 				livroDeArquitetura.setDescricao("Neste livro, os autores, conhecidos especialistas da "
-											   + " Ã¡rea, apresentam muitos tÃ³picos que aparecem com frequÃªncia"
+											   + " Área, apresentam muitos tópicos que aparecem com frequência"
 											   + " na plataforma Java, incluindo desde modelagem e design das "
-											   + "classes, atÃ© detalhes importantes das tecnologias mais utilizadas."
-											   + "  Sempre com uma visÃ£o tÃ©cnica e prÃ¡tica capaz de elucidar muitas "
-											   + "questÃµes enfrentadas tanto pelo profissional iniciante quanto por "
-											   + "aquele que estÃ¡ adquirindo mais experiÃªncia na plataforma.");
+											   + "classes, até detalhes importantes das tecnologias mais utilizadas."
+											   + "  Sempre com uma visão técnica e prática capaz de elucidar muitas "
+											   + "questões enfrentadas tanto pelo profissional iniciante quanto por "
+											   + "aquele que está adquirindo mais experiência na plataforma.");
 				
 				livroDeArquitetura.setLinkDaFoto("http://www.arquiteturajava.com.br/img/capa-livro.png");
 				
@@ -78,24 +78,24 @@ public class CriadorDeProdutos {
 				livroDeSpring.setNome("Vire o jogo com Spring Framework");
 				livroDeSpring.setLoja(casaDoCodigo);
 				livroDeSpring.setPreco(30.0);
-//				livroDeSpring.adicionarCategorias(tecnologia);
-				livroDeSpring.setDescricao("Criado para simplificar o desenvolvimento de aplicaÃ§Ãµes Java, "
+				livroDeSpring.adicionarCategorias(tecnologia);
+				livroDeSpring.setDescricao("Criado para simplificar o desenvolvimento de aplicações Java, "
 						+ "o Spring se tornou um dos frameworks de mais destaque dentro desse grande ambiente.  "
-						+ "Aprenda muito mais que o bÃ¡sico do Spring, desde o tradicional Container de InversÃ£o "
-						+ "de Controle e InjeÃ§Ã£o de DependÃªncias, passando pelos robustos mÃ³dulos de seguranÃ§a, "
-						+ "transaÃ§Ãµes, programaÃ§Ã£o orientada a aspectos e tambÃ©m o fantÃ¡stico mÃ³dulo MVC, o SpringMVC.");
+						+ "Aprenda muito mais que o básico do Spring, desde o tradicional Container de Inversão "
+						+ "de Controle e Injeção de Dependências, passando pelos robustos módulos de segurança, "
+						+ "transações, programação orientada a aspectos e também o fantástico módulo MVC, o SpringMVC.");
 				
 				livroDeSpring.setLinkDaFoto("http://cdn.shopify.com/s/files/1/0155/7645/products/spring-framework-featured_large.png?v=1411567960");
 				
 				em.persist(livroDeSpring);
 				
 				Produto violao = new Produto();
-				violao.setNome("ViolÃ£o");
+				violao.setNome("Violão");
 				violao.setLoja(musicalAlegre);
-				violao.setDescricao("Excelente violÃ£o");
+				violao.setDescricao("Excelente violão");
 				violao.setPreco(500.0);
-//				violao.adicionarCategorias(musica);
-				violao.setLinkDaFoto("http://www.marillac.g12.br/imgs/atividade%20complementar/violao.jpg");
+				violao.adicionarCategorias(musica);
+				violao.setLinkDaFoto("https://images.livrariasaraiva.com.br/imagemnet/imagem.aspx/?pro_id=2618458&qld=90&l=430&a=-1");
 				
 				em.persist(violao);
 				
@@ -104,7 +104,7 @@ public class CriadorDeProdutos {
 				flauta.setLoja(musicalAlegre);
 				flauta.setDescricao("Flauta doce");
 				flauta.setPreco(300.0);
-//				flauta.adicionarCategorias(musica);
+				flauta.adicionarCategorias(musica);
 				flauta.setLinkDaFoto("http://i.mlcdn.com.br/1500x1500/flauta-doce-germanicayamaha-yrs-23g-204013000.jpg");
 				
 				em.persist(flauta);
