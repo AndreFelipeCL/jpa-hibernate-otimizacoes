@@ -12,7 +12,7 @@
 			<div class="container">
 				<h3>${produto.nome}</h3>
 				<div class="col-sm-7">
-					<legend></legend>
+					<hr />
 					<div class="col-sm-5">
 						<img src="${produto.linkDaFoto}" width="200" height="300">
 					</div>

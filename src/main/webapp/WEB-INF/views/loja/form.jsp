@@ -35,38 +35,37 @@
 						</div>	
 					</div>
 				</div>
-				<div class="col-sm-4">
-					<div class="panel panel-default">
-						<div class="panel-heading">
-							Buscar por:
-						</div>
-						<div class="panel-body"> 
-							<form class="form-group">
-								<p>
-									<input type="text" class="form-control" placeholder="Nome">
-								</p>
-								<p>
-									<select class="form-control">
-										<option selected>Categoria</option>	
-										<option>Tecnologia</option>	
-										<option>MÃºsica</option>	
-										<option>Moda</option>
-									</select>
-								</p>
-								<p>
-									<select class="form-control">
-										<option selected>Loja</option>	
-										<option>Loja 1</option>	
-										<option>Loja 2</option>	
-										<option>Loja 3</option>
-									</select>
-								</p>
-								<p>
-									<button class="btn btn-primary form-control">Buscar</button>
-								</p>
-							</form>
-						</div>
-					</div>					
+		<div class="col-sm-4">
+			<div class="panel panel-default">
+				<div class="panel-heading">Buscar por:</div>
+				<div class="panel-body">
+					<form class="form-group">
+						<p>
+							<input type="text" class="form-control" placeholder="Nome">
+						</p>
+						<p>
+							<select class="form-control">
+								<option selected>Categoria</option>
+								<option>Tecnologia</option>
+								<option>MÃºsica</option>
+								<option>Moda</option>
+							</select>
+						</p>
+						<p>
+							<select class="form-control">
+								<option selected>Loja</option>
+								<option>Loja 1</option>
+								<option>Loja 2</option>
+								<option>Loja 3</option>
+							</select>
+						</p>
+						<p>
+							<button class="btn btn-primary form-control">Buscar</button>
+						</p>
+					</form>
+				</div>
 			</div>
+		</div>
+	</div>
 	</body>
 </html>

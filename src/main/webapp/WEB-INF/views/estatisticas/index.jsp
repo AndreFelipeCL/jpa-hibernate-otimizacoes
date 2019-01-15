@@ -27,7 +27,7 @@
 								<td></td>
 								<!-- Miss -->
 								<td></td>
-								<! -- Conections -->
+								<!-- Conections -->
 								<td></td>
 							</tr>
 						</tbody>
