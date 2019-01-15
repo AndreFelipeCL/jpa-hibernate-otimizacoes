@@ -1,5 +1,6 @@
 package br.com.caelum;
 
+import java.beans.PropertyVetoException;
 import java.util.Properties;
 
 import javax.persistence.EntityManagerFactory;
@@ -13,19 +14,28 @@ import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+import com.mchange.v2.c3p0.ComboPooledDataSource;
+
 @Configuration
 @EnableTransactionManagement
 public class JpaConfigurator {
 
 	@Bean
-	public DataSource getDataSource() {
-	    DriverManagerDataSource dataSource = new DriverManagerDataSource();
-
-	    dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
-	    dataSource.setUrl("jdbc:mysql://localhost/projeto_jpa?useTimezone=true&serverTimezone=UTC");
-	    dataSource.setUsername("root");
-	    dataSource.setPassword("135246@@");
-
+	public DataSource getDataSource() throws PropertyVetoException {
+		ComboPooledDataSource dataSource = new ComboPooledDataSource();
+		dataSource.setDriverClass("com.mysql.cj.jdbc.Driver");
+		dataSource.setUser("root");
+		dataSource.setPassword("135246@@");
+		dataSource.setJdbcUrl("jdbc:mysql://localhost/projeto_jpa?useTimezone=true&serverTimezone=UTC");
+		
+		//quantas conexões devemos ter no mínimo no nosso pool.
+		dataSource.setMinPoolSize(3);
+		dataSource.setMaxPoolSize(5);
+		//número de Threads para que o C3p0 possa trabalhar de modo assíncrono e mais performático
+		dataSource.setNumHelperThreads(15);
+		//matar as conexões que ficam ociosas por muito tempo em segundos.
+		dataSource.setIdleConnectionTestPeriod(1);
+		
 	    return dataSource;
 	}
 
