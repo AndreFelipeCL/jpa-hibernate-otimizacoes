@@ -2,6 +2,8 @@ package br.com.caelum;
 
 import java.util.List;
 
+import javax.persistence.EntityManager;
+
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -30,58 +32,68 @@ import br.com.caelum.model.Produto;
 @ComponentScan("br.com.caelum")
 @EnableTransactionManagement
 public class Configurador extends WebMvcConfigurerAdapter {
-	
+
+	/**
+	 * Método responsável por retorar uma instancia de {@link OpenEntityManagerInViewInterceptor} para que 
+	 * a mesma sessão do {@link EntityManager} dure por toda a request da JSP fazendo uso adequado do modo LAZY
+	 * do Hibernate. 
+	 * @return {@link OpenEntityManagerInViewInterceptor}
+	 */
 	@Bean
 	public OpenEntityManagerInViewInterceptor getOpenEntityManagerInViewInterceptor() {
 		return new OpenEntityManagerInViewInterceptor();
 	}
-	
+
+	/**
+	 * Registra um Interceptor de Filtro ao SpringMVC para que o mesmo entenda que este filtro deve
+	 * durar todo o cilco de vida da request.
+	 */
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
 		registry.addWebRequestInterceptor(getOpenEntityManagerInViewInterceptor());
 	}
-	
+
 	@Bean
 	@Scope("request")
 	public List<Produto> produtos(ProdutoDao produtoDao) {
 		List<Produto> produtos = produtoDao.getProdutos();
-		
+
 		return produtos;
 	}
-	
+
 	@Bean
-	public List<Categoria> categorias(CategoriaDao categoriaDao) { 
+	public List<Categoria> categorias(CategoriaDao categoriaDao) {
 		List<Categoria> categorias = categoriaDao.getCategorias();
-		
+
 		return categorias;
 	}
-	
+
 	@Bean
-	public List<Loja> lojas(LojaDao lojaDao) { 
+	public List<Loja> lojas(LojaDao lojaDao) {
 		List<Loja> lojas = lojaDao.getLojas();
-		
+
 		return lojas;
 	}
-	
+
 	@Bean
-	public MessageSource messageSource() { 
+	public MessageSource messageSource() {
 		ReloadableResourceBundleMessageSource messageSource = new ReloadableResourceBundleMessageSource();
-		
+
 		messageSource.setBasename("/WEB-INF/messages");
 		messageSource.setCacheSeconds(1);
 		messageSource.setDefaultEncoding("ISO-8859-1");
-		
+
 		return messageSource;
-		
+
 	}
-	
-	@Bean 
+
+	@Bean
 	public ViewResolver getViewResolver() {
 		InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
 
 		viewResolver.setPrefix("/WEB-INF/views/");
 		viewResolver.setSuffix(".jsp");
-		
+
 		viewResolver.setExposeContextBeansAsAttributes(true);
 
 		return viewResolver;
@@ -95,11 +107,11 @@ public class Configurador extends WebMvcConfigurerAdapter {
 			public Categoria convert(String categoriaId) {
 				Categoria categoria = new Categoria();
 				categoria.setId(Integer.valueOf(categoriaId));
-				
+
 				return categoria;
 			}
-			
+
 		});
 	}
-	
+
 }
