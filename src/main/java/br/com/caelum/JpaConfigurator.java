@@ -56,7 +56,7 @@ public class JpaConfigurator {
 		//habilitando o cache de segundo nível compartilhado com o pool de conexões
 		props.setProperty("hibernate.cache.use_second_level_cache", "true");
 		//indicando ao hibernate o provider de chace que estamos utilizando
-		props.setProperty("hibernate.cache.region.factory_class", "org.hibernate.cache.encache.SingletonEhCacheRegionFactory");
+		props.setProperty("hibernate.cache.region.factory_class", "org.hibernate.cache.ehcache.SingletonEhCacheRegionFactory");
 
 		entityManagerFactory.setJpaProperties(props);
 		return entityManagerFactory;
