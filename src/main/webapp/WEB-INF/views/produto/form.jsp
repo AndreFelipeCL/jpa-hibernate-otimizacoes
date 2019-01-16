@@ -100,6 +100,8 @@
 					</div>
 				</c:if>
 				
+				<input type="hidden" name="version" value="${produto.version}">
+				
  			</form>
 		</div>
 	</div>
