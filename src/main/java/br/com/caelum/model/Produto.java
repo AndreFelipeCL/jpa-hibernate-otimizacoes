@@ -42,10 +42,12 @@ public class Produto {
 	private double preco;
 	
 	@ManyToMany
+	@Cache(usage=CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 	private List<Categoria> categorias = new ArrayList<>();
 	
 	@Valid
 	@ManyToOne
+	@Cache(usage=CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 	private Loja loja;
 	
 	public void adicionarCategorias(Categoria ... c) {
