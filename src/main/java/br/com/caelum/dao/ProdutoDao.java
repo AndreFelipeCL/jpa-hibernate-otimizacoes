@@ -45,6 +45,8 @@ public class ProdutoDao {
 		if(Objects.nonNull(categoriaId))
 			criteria.setFetchMode("categorias", FetchMode.JOIN).createAlias("categorias", "c").add(Restrictions.like("c.id", categoriaId));
 		
+		criteria.setCacheable(true);
+		
 		return (List<Produto>) criteria.list();
 	}
 
