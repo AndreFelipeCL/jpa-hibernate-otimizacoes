@@ -6,6 +6,8 @@ import java.util.Properties;
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
 
+import org.hibernate.SessionFactory;
+import org.hibernate.stat.Statistics;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.orm.jpa.JpaTransactionManager;
@@ -33,9 +35,15 @@ public class JpaConfigurator {
 		//número de Threads para que o C3p0 possa trabalhar de modo assíncrono e mais performático
 		dataSource.setNumHelperThreads(15);
 		//matar as conexões que ficam ociosas por muito tempo em segundos.
-		dataSource.setIdleConnectionTestPeriod(1);
+//		dataSource.setIdleConnectionTestPeriod(1);
 		
 	    return dataSource;
+	}
+	
+	@Bean
+	public Statistics statistics(EntityManagerFactory emf) {
+		SessionFactory factory = emf.unwrap(SessionFactory.class);
+		return factory.getStatistics();
 	}
 
 	@Bean
@@ -59,6 +67,8 @@ public class JpaConfigurator {
 		props.setProperty("hibernate.cache.region.factory_class", "org.hibernate.cache.ehcache.SingletonEhCacheRegionFactory");
 		// ativando o cache de queries
 		props.setProperty("hibernate.cache.use_query_cache", "true");
+		// Habilitando o Statistics do Hibernate
+		props.setProperty("hibernate.generate_statistics", "true");
 		
 		entityManagerFactory.setJpaProperties(props);
 		return entityManagerFactory;

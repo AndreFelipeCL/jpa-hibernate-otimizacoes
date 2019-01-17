@@ -17,18 +17,20 @@
 							<tr>
 								<th>Hit</th>
 								<th>Miss</th>
+								<th>Queries Executadas</th>
 								<th>Conexões</th>
 							</tr>
 						</thead>
 						<tbody>
 							<tr>
-								<td>Cache</td>
 								<!-- Hit -->
-								<td></td>
+								<td>${statistics.queryCacheHitCount}</td>
 								<!-- Miss -->
-								<td></td>
+								<td>${statistics.queryCacheMissCount}</td>
+								<!-- Query Execution -->
+								<td>${statistics.queryExecutionCount}</td>
 								<!-- Conections -->
-								<td></td>
+								<td>${statistics.connectCount}</td>
 							</tr>
 						</tbody>
 					</table>
